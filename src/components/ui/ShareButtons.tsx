@@ -49,7 +49,8 @@ const GITHUB_MARK = (
 export function ShareButtons() {
   const [copied, setCopied] = useState(false);
 
-  const pageUrl = typeof window !== "undefined" ? window.location.origin : "https://envsmith.vercel.app";
+  // Always share the canonical production URL (also avoids SSR/client hydration mismatch).
+  const pageUrl = "https://envsmith.vercel.app";
   const shareText = "EnvSmith — safe .env.example generator & Zod validator that runs entirely in your browser";
   const encoded = encodeURIComponent(pageUrl);
   const encodedText = encodeURIComponent(shareText);
