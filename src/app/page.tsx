@@ -21,10 +21,16 @@ export default function HomePage() {
     setPasteOpen(false);
   };
 
+  const goHome = () => {
+    reset();
+    setView("landing");
+    setPasteOpen(false);
+  };
+
   if (view === "landing") {
     return (
       <>
-        <Header />
+        <Header onHome={goHome} />
         <Landing
           onFile={handleFile}
           onCompareClick={() => setView("compare-only")}
@@ -49,7 +55,7 @@ export default function HomePage() {
   if (view === "compare-only") {
     return (
       <>
-        <Header />
+        <Header onHome={goHome} />
         <CompareOnlyView onFile={handleFile} onBack={() => setView("landing")} />
       </>
     );
@@ -57,7 +63,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Header />
+      <Header onHome={goHome} />
       <Workspace
         stats={stats}
         variables={state.variables}
