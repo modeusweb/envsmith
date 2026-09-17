@@ -46,6 +46,7 @@ export function Workspace({
 }: WorkspaceProps) {
   const [tab, setTab] = useState<Tab>("variables");
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
+  const [editorOpen, setEditorOpen] = useState(false);
   const [generating, setGenerating] = useState(false);
 
   // Cmd/Ctrl+K focuses the variables search
@@ -66,7 +67,13 @@ export function Workspace({
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  // `selectedKey` survives closing, so the sheet still has a variable to render while it animates out.
   const selected = selectedKey ? (variables.find((v) => v.key === selectedKey) ?? null) : null;
+
+  const openEditor = (key: string) => {
+    setSelectedKey(key);
+    setEditorOpen(true);
+  };
 
   const tabs: { key: Tab; label: string; badge?: number }[] = [
     { key: "variables", label: "Variables", badge: variables.length },
@@ -150,8 +157,8 @@ export function Workspace({
             )}
             <VariablesTable
               variables={variables}
-              selectedKey={selectedKey}
-              onSelect={setSelectedKey}
+              selectedKey={editorOpen ? selectedKey : null}
+              onSelect={openEditor}
               onRemove={onRemoveVariable}
             />
           </>
@@ -167,19 +174,19 @@ export function Workspace({
       {selected && (
         <VariableEditor
           variable={selected}
+          open={editorOpen}
           onUpdate={(patch) => onUpdateVariable(selected.key, patch)}
-          onClose={() => setSelectedKey(null)}
+          onClose={() => setEditorOpen(false)}
         />
       )}
 
-      {generating && (
-        <GenerationCenter
-          variables={variables}
-          mode={mode}
-          onModeChange={onModeChange}
-          onClose={() => setGenerating(false)}
-        />
-      )}
+      <GenerationCenter
+        variables={variables}
+        mode={mode}
+        open={generating}
+        onModeChange={onModeChange}
+        onClose={() => setGenerating(false)}
+      />
     </main>
   );
 }

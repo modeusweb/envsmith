@@ -19,6 +19,96 @@
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
+/**
+ * Popup motion.
+ *
+ * Enter animations run when the node mounts; exit animations run while the node is
+ * still mounted (see `usePresence`) and hold their last frame until it unmounts.
+ * Keep the exit durations in sync with `src/components/ui/Modal.tsx` and
+ * `src/components/ui/Header.tsx`.
+ *
+ * `prefers-reduced-motion` collapses all of these to an instant switch via the
+ * global rule at the bottom of this file.
+ */
+@theme {
+  --animate-popup-fade-in: popup-fade-in 200ms ease-out;
+  --animate-popup-fade-out: popup-fade-out 160ms ease-in forwards;
+  --animate-popup-sheet-in: popup-sheet-in 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-popup-sheet-out: popup-sheet-out 200ms cubic-bezier(0.4, 0, 1, 1) forwards;
+  --animate-popup-dialog-in: popup-dialog-in 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-popup-dialog-out: popup-dialog-out 150ms cubic-bezier(0.4, 0, 1, 1) forwards;
+  --animate-popup-panel-in: popup-panel-in 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-popup-panel-out: popup-panel-out 170ms cubic-bezier(0.4, 0, 1, 1) forwards;
+  --animate-popup-menu-in: popup-menu-in 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-popup-menu-out: popup-menu-out 140ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes popup-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes popup-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes popup-sheet-in {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes popup-sheet-out {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes popup-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.97);
+  }
+}
+
+@keyframes popup-dialog-out {
+  to {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.98);
+  }
+}
+
+@keyframes popup-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.985);
+  }
+}
+
+@keyframes popup-panel-out {
+  to {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.99);
+  }
+}
+
+@keyframes popup-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+}
+
+@keyframes popup-menu-out {
+  to {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
