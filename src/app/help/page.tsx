@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/ui/PageShell";
 
 export const metadata: Metadata = {
-  title: "Help & Guide — EnvSmith",
+  title: "Help & Guide",
   description:
     "How to use EnvSmith: upload your .env, review variables, adjust types and secrets, generate .env.example and Zod schemas.",
+  alternates: { canonical: "/help" },
 };
 
 const steps = [
@@ -57,9 +58,21 @@ const faq = [
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+
 export default function HelpPage() {
   return (
-    <PageShell
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <PageShell
       title="Help & Guide"
       subtitle="From drag & drop to generated files in three steps — here's the whole workflow."
     >
@@ -114,5 +127,6 @@ export default function HelpPage() {
         </ul>
       </section>
     </PageShell>
+    </>
   );
 }

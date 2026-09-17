@@ -8,6 +8,28 @@ import { useEnvWorkspace } from "@/hooks/use-env-workspace";
 
 type View = "landing" | "workspace";
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "EnvSmith",
+  url: "https://envsmith.vercel.app",
+  applicationCategory: "DeveloperApplication",
+  operatingSystem: "Any (web browser)",
+  browserRequirements: "Requires JavaScript",
+  description:
+    "Generate safe .env.example files and environment validation schemas (Zod) directly in your browser. 100% local processing.",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  featureList: [
+    "Drag & drop .env upload with 100% local processing",
+    "Automatic type inference (string, number, boolean, URL, JSON)",
+    "Secret detection and masking",
+    "Safe .env.example generation (Smart / Safe / Template modes)",
+    "Zod, TypeScript types and JSON Schema generation",
+    ".env vs .env.example diff",
+  ],
+  author: { "@type": "Person", name: "modeusweb", url: "https://github.com/modeusweb" },
+};
+
 export default function HomePage() {
   const [view, setView] = useState<View>("landing");
   const [pasteOpen, setPasteOpen] = useState(false);
@@ -31,6 +53,7 @@ export default function HomePage() {
     return (
       <>
         <Header onHome={goHome} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <Landing onFile={handleFile} onPasteClick={() => setPasteOpen(true)} />
         {pasteOpen && (
           <PasteDialog

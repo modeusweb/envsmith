@@ -4,9 +4,10 @@ import { PageShell } from "@/components/ui/PageShell";
 import { ShieldCheckIcon, LockClosedIcon, EyeSlashIcon, CpuChipIcon } from "@heroicons/react/24/outline";
 
 export const metadata: Metadata = {
-  title: "About — EnvSmith",
+  title: "About",
   description:
     "EnvSmith is a privacy-first developer tool that generates safe .env.example files and runtime validation schemas entirely in your browser.",
+  alternates: { canonical: "/about" },
 };
 
 const principles = [
