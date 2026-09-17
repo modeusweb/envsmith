@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRightIcon, ClipboardDocumentIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon, ClipboardDocumentIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
 import { DropZone } from "@/components/upload/DropZone";
 import { PrivacySection } from "./PrivacySection";
 import { ShareButtons } from "@/components/ui/ShareButtons";
@@ -27,10 +27,20 @@ export function Landing({
     <main className="mx-auto max-w-7xl px-4 sm:px-6 flex-1 w-full">
       <section className="text-center pt-14 sm:pt-20 pb-10">
         <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-3 py-1 text-xs font-medium text-zinc-600 dark:text-zinc-400">
-          EnvSmith · Privacy-first developer tool
+          <ShieldCheckIcon className="size-3.5 text-emerald-600 dark:text-emerald-400" aria-hidden />
+          Privacy-first developer tool
         </span>
-        <h1 className="mt-5 text-3xl sm:text-5xl font-semibold tracking-tight text-balance">
-          EnvSmith — Safe .env Example Generator &amp; Validator
+        <h1 className="mt-6 text-balance">
+          <span className="block bg-gradient-to-br from-sky-700 via-sky-600 to-emerald-600 bg-clip-text text-5xl font-bold tracking-tighter text-transparent sm:text-7xl dark:from-sky-400 dark:via-cyan-300 dark:to-emerald-400">
+            EnvSmith
+          </span>{" "}
+          <span
+            aria-hidden
+            className="mx-auto mt-3 block h-1 w-20 rounded-full bg-gradient-to-r from-sky-600 to-emerald-600 sm:w-28 dark:from-sky-400 dark:to-emerald-400"
+          />{" "}
+          <span className="mt-4 block text-lg font-medium tracking-tight text-zinc-600 sm:text-2xl dark:text-zinc-300">
+            Safe <code className="font-mono text-[0.92em]">.env</code> Example Generator &amp; Validator
+          </span>
         </h1>
         <p className="mt-3 text-xl sm:text-2xl font-medium tracking-tight text-balance">
           Keep your .env and .env.example in sync.
