@@ -16,11 +16,9 @@ const heroExample = [
 
 export function Landing({
   onFile,
-  onCompareClick,
   onPasteClick,
 }: {
   onFile: (fileName: string, fileSize: number, content: string) => void;
-  onCompareClick: () => void;
   onPasteClick: () => void;
 }) {
   return (
@@ -41,14 +39,13 @@ export function Landing({
       <section className="max-w-2xl mx-auto" aria-label="Upload your .env file">
         <DropZone onFile={onFile} />
         <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center">
-          <button
-            type="button"
-            onClick={onCompareClick}
+          <Link
+            href="/compare"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-sky-600 dark:text-sky-400 hover:underline focus-visible:outline-2 focus-visible:outline-sky-500"
           >
             Compare .env files
             <ArrowRightIcon className="size-4" aria-hidden />
-          </button>
+          </Link>
           <span aria-hidden className="text-zinc-300 dark:text-zinc-700">
             ·
           </span>

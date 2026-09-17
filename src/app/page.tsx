@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { Header } from "@/components/ui/Header";
 import { Landing } from "@/components/landing/Landing";
-import { Workspace, CompareOnlyView } from "@/components/workspace/Workspace";
+import { Workspace } from "@/components/workspace/Workspace";
 import { useEnvWorkspace } from "@/hooks/use-env-workspace";
 
-type View = "landing" | "workspace" | "compare-only";
+type View = "landing" | "workspace";
 
 export default function HomePage() {
   const [view, setView] = useState<View>("landing");
@@ -31,11 +31,7 @@ export default function HomePage() {
     return (
       <>
         <Header onHome={goHome} />
-        <Landing
-          onFile={handleFile}
-          onCompareClick={() => setView("compare-only")}
-          onPasteClick={() => setPasteOpen(true)}
-        />
+        <Landing onFile={handleFile} onPasteClick={() => setPasteOpen(true)} />
         {pasteOpen && (
           <PasteDialog
             value={pasteText}
@@ -48,15 +44,6 @@ export default function HomePage() {
             onClose={() => setPasteOpen(false)}
           />
         )}
-      </>
-    );
-  }
-
-  if (view === "compare-only") {
-    return (
-      <>
-        <Header onHome={goHome} />
-        <CompareOnlyView onFile={handleFile} onBack={() => setView("landing")} />
       </>
     );
   }
