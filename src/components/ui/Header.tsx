@@ -10,7 +10,7 @@ export function Header({ onHome }: { onHome?: () => void }) {
 
   return (
     <header className="sticky top-0 z-40 border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 h-14 flex items-center justify-between gap-3">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 h-14 flex items-center justify-between gap-3">
         {onHome ? (
           <button
             type="button"
@@ -31,7 +31,13 @@ export function Header({ onHome }: { onHome?: () => void }) {
             <span className="font-semibold tracking-tight truncate">EnvSmith</span>
           </Link>
         )}
-        <nav aria-label="Site" className="hidden sm:flex items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400">
+        <nav
+          aria-label="Site"
+          className="hidden sm:flex items-center gap-5 text-sm text-zinc-500 dark:text-zinc-400 absolute left-1/2 -translate-x-1/2"
+        >
+          <Link href="/compare" className="hover:text-zinc-800 dark:hover:text-zinc-200 focus-visible:outline-2 focus-visible:outline-sky-500 rounded">
+            Compare
+          </Link>
           <Link href="/about" className="hover:text-zinc-800 dark:hover:text-zinc-200 focus-visible:outline-2 focus-visible:outline-sky-500 rounded">
             About
           </Link>

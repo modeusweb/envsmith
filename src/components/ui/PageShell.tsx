@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Header } from "@/components/ui/Header";
+import { SiteFooter } from "@/components/ui/SiteFooter";
 
 interface PageShellProps {
   title: string;
@@ -26,16 +27,8 @@ export function PageShell({ title, subtitle, children }: PageShellProps) {
         {subtitle && <p className="mt-3 text-base text-zinc-600 dark:text-zinc-400 max-w-2xl">{subtitle}</p>}
         <div className="mt-8 space-y-8">{children}</div>
       </main>
-      <footer className="border-t border-zinc-200 dark:border-zinc-800 py-8">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 flex flex-wrap items-center justify-between gap-3 text-xs text-zinc-500 dark:text-zinc-500">
-          <span>EnvSmith — no accounts, no uploads, no tracking.</span>
-          <nav aria-label="Footer" className="flex items-center gap-4">
-            <Link href="/" className="hover:text-zinc-800 dark:hover:text-zinc-300">Home</Link>
-            <Link href="/about" className="hover:text-zinc-800 dark:hover:text-zinc-300">About</Link>
-            <Link href="/help" className="hover:text-zinc-800 dark:hover:text-zinc-300">Help</Link>
-          </nav>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }
+

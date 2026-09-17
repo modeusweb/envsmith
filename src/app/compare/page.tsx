@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
+import { useState } from "react";
 import { Header } from "@/components/ui/Header";
+import { SiteFooter } from "@/components/ui/SiteFooter";
 import { ComparePanel } from "@/components/compare/ComparePanel";
 import { DropZone } from "@/components/upload/DropZone";
 import { useEnvWorkspace } from "@/hooks/use-env-workspace";
@@ -87,6 +88,7 @@ export default function ComparePage() {
           </div>
         )}
       </main>
+      <SiteFooter />
       {pasteOpen && (
         <PasteDialog
           value={pasteText}
