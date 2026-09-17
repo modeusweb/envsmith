@@ -25,9 +25,8 @@ export function ComparePanel({ diff, exampleFileName, onExampleFile }: ComparePa
       </h2>
 
       {!exampleFileName && (
-        <div className="max-w-xl">
+        <div className="w-full">
           <DropZone
-            compact
             label="Drop your .env.example to compare"
             onFile={(name, _size, content) => onExampleFile(name, content)}
           />

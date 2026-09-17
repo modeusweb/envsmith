@@ -7,11 +7,10 @@ import { readFileAsText } from "@/utils/file";
 interface DropZoneProps {
   onFile: (fileName: string, fileSize: number, content: string) => void;
   accept?: string;
-  compact?: boolean;
   label?: string;
 }
 
-export function DropZone({ onFile, accept, compact = false, label }: DropZoneProps) {
+export function DropZone({ onFile, accept, label }: DropZoneProps) {
   const [dragging, setDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -55,28 +54,22 @@ export function DropZone({ onFile, accept, compact = false, label }: DropZonePro
         }}
         onDragLeave={() => setDragging(false)}
         onDrop={onDrop}
-        className={`group cursor-pointer rounded-xl border-2 border-dashed text-center transition-colors focus-visible:outline-2 focus-visible:outline-sky-500 ${
-          compact ? "p-4" : "p-10 sm:p-14"
-        } ${
+        className={`group cursor-pointer rounded-xl border-2 border-dashed text-center transition-colors focus-visible:outline-2 focus-visible:outline-sky-500 p-10 sm:p-14 ${
           dragging
             ? "border-sky-500 bg-sky-50 dark:bg-sky-950/40"
             : "border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500 bg-white dark:bg-zinc-900/50"
         }`}
       >
         <ArrowUpTrayIcon
-          className={`mx-auto text-zinc-400 dark:text-zinc-500 ${compact ? "size-5" : "size-8"} transition-colors group-hover:text-sky-500`}
+          className="mx-auto size-8 text-zinc-400 dark:text-zinc-500 transition-colors group-hover:text-sky-500"
           aria-hidden
         />
-        <p className={`mt-3 font-medium text-zinc-900 dark:text-zinc-100 ${compact ? "text-sm" : ""}`}>
-          {label ?? "Drop your .env here"}
+        <p className="mt-3 font-medium text-zinc-900 dark:text-zinc-100">{label ?? "Drop your .env here"}</p>
+        <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">or click to browse</p>
+        <p className="mt-4 inline-flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400">
+          <LockClosedIcon className="size-3.5" aria-hidden />
+          Nothing is uploaded.
         </p>
-        {!compact && <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">or click to browse</p>}
-        {!compact && (
-          <p className="mt-4 inline-flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400">
-            <LockClosedIcon className="size-3.5" aria-hidden />
-            Nothing is uploaded.
-          </p>
-        )}
       </div>
       <input
         ref={inputRef}
