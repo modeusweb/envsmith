@@ -11,17 +11,29 @@ export function SiteFooter() {
         <span>EnvSmith — no accounts, no uploads, no tracking.</span>
         <div className="flex items-center gap-4">
           <nav aria-label="Footer" className="flex items-center gap-4">
-            <Link href="/" className="hover:text-zinc-800 dark:hover:text-zinc-300 focus-visible:outline-2 focus-visible:outline-sky-500 rounded">
+            <Link
+              href="/"
+              className="hover:text-zinc-800 dark:hover:text-zinc-300 focus-visible:outline-2 focus-visible:outline-sky-500 rounded"
+            >
               Home
             </Link>
-            <Link href="/about" className="hover:text-zinc-800 dark:hover:text-zinc-300 focus-visible:outline-2 focus-visible:outline-sky-500 rounded">
-              About
+            <Link
+              href="/about"
+              className="hover:text-zinc-800 dark:hover:text-zinc-300 focus-visible:outline-2 focus-visible:outline-sky-500 rounded"
+            >
+              About the project
             </Link>
-            <Link href="/help" className="hover:text-zinc-800 dark:hover:text-zinc-300 focus-visible:outline-2 focus-visible:outline-sky-500 rounded">
-              Help
+            <Link
+              href="/help"
+              className="hover:text-zinc-800 dark:hover:text-zinc-300 focus-visible:outline-2 focus-visible:outline-sky-500 rounded"
+            >
+              Help and FAQ
             </Link>
-            <Link href="/compare" className="hover:text-zinc-800 dark:hover:text-zinc-300 focus-visible:outline-2 focus-visible:outline-sky-500 rounded">
-              Compare
+            <Link
+              href="/compare"
+              className="hover:text-zinc-800 dark:hover:text-zinc-300 focus-visible:outline-2 focus-visible:outline-sky-500 rounded"
+            >
+              Compare two .env files
             </Link>
           </nav>
           <a
