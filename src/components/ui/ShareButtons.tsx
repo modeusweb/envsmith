@@ -6,6 +6,45 @@ import { LinkIcon, CheckIcon } from "@heroicons/react/24/outline";
 
 const GITHUB_URL = "https://github.com/modeusweb/envsmith";
 
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
+function RedditIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
+      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.994 4.87-3.864 0-6.994-2.176-6.994-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.91 2.961.91.477 0 2.105-.056 2.961-.91a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z" />
+    </svg>
+  );
+}
+
+function LinkedInIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+    </svg>
+  );
+}
+
+function HackerNewsIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
+      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.747 17.25h-2.152l-3.607-5.72-3.588 5.72H6.268l4.627-7.024L6.44 4.75h2.213l3.004 4.793L14.7 4.75h2.128l-4.466 6.988 4.664 7.25z" transform="scale(.85) translate(2.1 2.1)" />
+    </svg>
+  );
+}
+
+const GITHUB_MARK = (
+  <svg viewBox="0 0 16 16" className="size-3.5" fill="currentColor" aria-hidden>
+    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+  </svg>
+);
+
+
 /** Simple social sharing row (native share + link copy, no tracking scripts). */
 export function ShareButtons() {
   const [copied, setCopied] = useState(false);
@@ -16,10 +55,10 @@ export function ShareButtons() {
   const encodedText = encodeURIComponent(shareText);
 
   const links = [
-    { label: "Share on X", href: `https://twitter.com/intent/tweet?url=${encoded}&text=${encodedText}` },
-    { label: "Share on Reddit", href: `https://www.reddit.com/submit?url=${encoded}&title=${encodedText}` },
-    { label: "Share on LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encoded}` },
-    { label: "Share on Hacker News", href: `https://news.ycombinator.com/submitlink?u=${encoded}&t=${encodedText}` },
+    { label: "Share on X", href: `https://twitter.com/intent/tweet?url=${encoded}&text=${encodedText}`, Icon: XIcon },
+    { label: "Share on Reddit", href: `https://www.reddit.com/submit?url=${encoded}&title=${encodedText}`, Icon: RedditIcon },
+    { label: "Share on LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encoded}`, Icon: LinkedInIcon },
+    { label: "Share on Hacker News", href: `https://news.ycombinator.com/submitlink?u=${encoded}&t=${encodedText}`, Icon: HackerNewsIcon },
   ];
 
   const copy = async () => {
@@ -39,32 +78,38 @@ export function ShareButtons() {
         Share it with your team — links open in a new tab, nothing is tracked.
       </p>
       <div className="mt-4 flex flex-wrap items-center gap-2">
-        {links.map((l) => (
+        {links.map(({ label, href, Icon }) => (
           <a
-            key={l.label}
-            href={l.href}
+            key={label}
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-1.5 text-xs font-medium text-zinc-600 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sky-500"
+            aria-label={label}
+            title={label}
+            className="inline-flex items-center justify-center size-9 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-500 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sky-500"
           >
-            {l.label}
+            <Icon className="size-4" />
           </a>
         ))}
         <button
           type="button"
           onClick={copy}
-          className="inline-flex items-center gap-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-1.5 text-xs font-medium text-zinc-600 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sky-500"
+          aria-label="Copy link to this page"
+          title="Copy link"
+          className="inline-flex items-center justify-center size-9 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-500 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sky-500"
         >
-          {copied ? <CheckIcon className="size-3.5 text-emerald-500" aria-hidden /> : <LinkIcon className="size-3.5" aria-hidden />}
-          {copied ? "Link copied" : "Copy link"}
+          {copied ? <CheckIcon className="size-4 text-emerald-500" aria-hidden /> : <LinkIcon className="size-4" aria-hidden />}
         </button>
         <a
           href={GITHUB_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-1.5 text-xs font-medium text-zinc-600 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sky-500"
+          aria-label="Star EnvSmith on GitHub (opens in a new tab)"
+          title="Star on GitHub"
+          className="inline-flex items-center gap-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 pl-2.5 pr-3 py-2 text-xs font-medium text-zinc-600 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sky-500"
         >
-          Star on GitHub
+          {GITHUB_MARK}
+          Star
         </a>
         <span aria-hidden className="hidden sm:inline text-zinc-300 dark:text-zinc-700">
           ·
