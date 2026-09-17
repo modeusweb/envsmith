@@ -51,3 +51,7 @@ package-lock.json
 *.test.ts
 scripts/*.mjs
 
+
+# playwright runtime artifacts
+ui-debug.png
+ui-check.log
