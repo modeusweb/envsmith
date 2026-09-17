@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import {
   MagnifyingGlassIcon,
   EyeIcon,
@@ -305,85 +305,94 @@ function ValueCell({
   );
 }
 
+/**
+ * Sticky header cell for the desktop table.
+ *
+ * The table lives inside its own scroll container, so `top-0` pins the header to the
+ * top of that container while the rows scroll underneath it. The divider line is drawn
+ * with an inset box-shadow instead of a border because borders on sticky cells are not
+ * painted reliably when table borders are collapsed.
+ */
+function HeaderCell({ children, align = "left" }: { children: ReactNode; align?: "left" | "right" }) {
+  return (
+    <th
+      scope="col"
+      className={`sticky top-0 z-10 whitespace-nowrap bg-zinc-50 px-3 py-2 text-xs font-medium text-zinc-500 shadow-[inset_0_-1px_0_0_#e4e4e7] dark:bg-zinc-900 dark:text-zinc-400 dark:shadow-[inset_0_-1px_0_0_#27272a] ${
+        align === "right" ? "text-right" : "text-left"
+      }`}
+    >
+      {children}
+    </th>
+  );
+}
+
 function DesktopTable({ variables, selectedKey, onSelect, onRemove, revealed, toggleReveal }: TableProps) {
   return (
-    <div className="hidden md:block overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800">
-      <table className="w-full text-sm">
-        <thead className="sticky top-14 bg-zinc-50 dark:bg-zinc-900 text-left text-xs text-zinc-500 dark:text-zinc-400 z-10">
-          <tr>
-            <th scope="col" className="px-3 py-2 font-medium">
-              Variable
-            </th>
-            <th scope="col" className="px-3 py-2 font-medium">
-              Type
-            </th>
-            <th scope="col" className="px-3 py-2 font-medium">
-              Secret
-            </th>
-            <th scope="col" className="px-3 py-2 font-medium">
-              Required
-            </th>
-            <th scope="col" className="px-3 py-2 font-medium">
-              Value
-            </th>
-            <th scope="col" className="px-3 py-2 font-medium">
-              Description
-            </th>
-            <th scope="col" className="px-3 py-2 font-medium">
-              Issues
-            </th>
-            <th scope="col" className="px-3 py-2">
-              <span className="sr-only">Actions</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
-          {variables.map((v) => (
-            <tr
-              key={v.key}
-              onClick={() => onSelect(v.key)}
-              className={`cursor-pointer transition-colors ${
-                selectedKey === v.key
-                  ? "bg-sky-50 dark:bg-sky-950/40"
-                  : "hover:bg-zinc-50 dark:hover:bg-zinc-900"
-              }`}
-            >
-              <td className="px-3 py-2 font-mono text-xs font-medium">{v.key}</td>
-              <td className="px-3 py-2">
-                <TypePill type={v.type} />
-              </td>
-              <td className="px-3 py-2">
-                <SecretBadge classification={v.classification} />
-              </td>
-              <td className="px-3 py-2">{v.required && v.rawValue !== "" ? "Yes" : "Optional"}</td>
-              <td className="px-3 py-2">
-                <ValueCell v={v} revealed={revealed} toggleReveal={toggleReveal} />
-              </td>
-              <td className="px-3 py-2 text-zinc-500 dark:text-zinc-400 max-w-48 truncate">
-                {v.description || "—"}
-              </td>
-              <td className="px-3 py-2">
-                <IssueBadges variable={v} />
-              </td>
-              <td className="px-3 py-2 text-right">
-                {onRemove && (
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onRemove(v.key);
-                    }}
-                    className="p-1 rounded text-zinc-400 hover:text-red-500 focus-visible:outline-2 focus-visible:outline-sky-500"
-                    aria-label={`Remove ${v.key}`}
-                  >
-                    <TrashIcon className="size-4" />
-                  </button>
-                )}
-              </td>
+    <div className="hidden md:block">
+      <div className="max-h-[70vh] overflow-auto rounded-lg border border-zinc-200 dark:border-zinc-800">
+        <table className="w-full text-sm">
+          <thead>
+            <tr>
+              <HeaderCell>Variable</HeaderCell>
+              <HeaderCell>Type</HeaderCell>
+              <HeaderCell>Secret</HeaderCell>
+              <HeaderCell>Required</HeaderCell>
+              <HeaderCell>Value</HeaderCell>
+              <HeaderCell>Description</HeaderCell>
+              <HeaderCell>Issues</HeaderCell>
+              <HeaderCell align="right">
+                <span className="sr-only">Actions</span>
+              </HeaderCell>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
+            {variables.map((v) => (
+              <tr
+                key={v.key}
+                onClick={() => onSelect(v.key)}
+                className={`cursor-pointer transition-colors ${
+                  selectedKey === v.key
+                    ? "bg-sky-50 dark:bg-sky-950/40"
+                    : "hover:bg-zinc-50 dark:hover:bg-zinc-900"
+                }`}
+              >
+                <td className="px-3 py-2 font-mono text-xs font-medium">{v.key}</td>
+                <td className="px-3 py-2">
+                  <TypePill type={v.type} />
+                </td>
+                <td className="px-3 py-2">
+                  <SecretBadge classification={v.classification} />
+                </td>
+                <td className="px-3 py-2">{v.required && v.rawValue !== "" ? "Yes" : "Optional"}</td>
+                <td className="px-3 py-2">
+                  <ValueCell v={v} revealed={revealed} toggleReveal={toggleReveal} />
+                </td>
+                <td className="px-3 py-2 text-zinc-500 dark:text-zinc-400 max-w-48 truncate">
+                  {v.description || "—"}
+                </td>
+                <td className="px-3 py-2">
+                  <IssueBadges variable={v} />
+                </td>
+                <td className="px-3 py-2 text-right">
+                  {onRemove && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onRemove(v.key);
+                      }}
+                      className="p-1 rounded text-zinc-400 hover:text-red-500 focus-visible:outline-2 focus-visible:outline-sky-500"
+                      aria-label={`Remove ${v.key}`}
+                    >
+                      <TrashIcon className="size-4" />
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

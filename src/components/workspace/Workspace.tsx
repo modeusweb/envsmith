@@ -91,7 +91,7 @@ export function Workspace({
           <LockClosedIcon className="size-3.5" aria-hidden />
           Your .env never leaves your browser.
         </span>
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-4">
           <button
             type="button"
             onClick={onReset}
