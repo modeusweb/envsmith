@@ -18,7 +18,7 @@ export function Header({ onHome }: { onHome?: () => void }) {
             className="flex items-center gap-2.5 min-w-0 rounded-md focus-visible:outline-2 focus-visible:outline-sky-500"
             aria-label="EnvSmith — back to home"
           >
-            <Image src="/logo.svg" alt="" width={28} height={28} className="rounded-md" priority />
+            <Image src="/logo.svg" alt="EnvSmith logo" width={28} height={28} className="rounded-md" priority />
             <span className="font-semibold tracking-tight truncate">EnvSmith</span>
           </button>
         ) : (
@@ -27,7 +27,7 @@ export function Header({ onHome }: { onHome?: () => void }) {
             className="flex items-center gap-2.5 min-w-0 rounded-md focus-visible:outline-2 focus-visible:outline-sky-500"
             aria-label="EnvSmith — back to home"
           >
-            <Image src="/logo.svg" alt="" width={28} height={28} className="rounded-md" priority />
+            <Image src="/logo.svg" alt="EnvSmith logo" width={28} height={28} className="rounded-md" priority />
             <span className="font-semibold tracking-tight truncate">EnvSmith</span>
           </Link>
         )}

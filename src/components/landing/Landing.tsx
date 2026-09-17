@@ -4,6 +4,8 @@ import Link from "next/link";
 import { ArrowRightIcon, ClipboardDocumentIcon } from "@heroicons/react/24/outline";
 import { DropZone } from "@/components/upload/DropZone";
 import { PrivacySection } from "./PrivacySection";
+import { ShareButtons } from "@/components/ui/ShareButtons";
+import { SiteFooter } from "@/components/ui/SiteFooter";
 
 const heroExample = [
   { label: ".env", lines: ["DATABASE_URL=••••••••", "API_KEY=••••••••", "PORT=3000"] },
@@ -27,7 +29,9 @@ export function Landing({
         <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-3 py-1 text-xs font-medium text-zinc-600 dark:text-zinc-400">
           EnvSmith · Privacy-first developer tool
         </span>
-        <h1 className="mt-5 text-4xl sm:text-6xl font-semibold tracking-tight">EnvSmith</h1>
+        <h1 className="mt-5 text-3xl sm:text-5xl font-semibold tracking-tight text-balance">
+          EnvSmith — Safe .env Example Generator &amp; Validator
+        </h1>
         <p className="mt-3 text-xl sm:text-2xl font-medium tracking-tight text-balance">
           Keep your .env and .env.example in sync.
         </p>
@@ -89,19 +93,68 @@ export function Landing({
 
       <PrivacySection />
 
-      <footer className="py-10 text-center text-xs text-zinc-500 dark:text-zinc-500">
-        <div className="flex flex-col items-center gap-3">
-          <span>EnvSmith — no accounts, no uploads, no tracking.</span>
-          <nav aria-label="Footer" className="flex items-center gap-4">
-            <Link href="/about" className="hover:text-zinc-800 dark:hover:text-zinc-300 focus-visible:outline-2 focus-visible:outline-sky-500 rounded">
-              About
-            </Link>
-            <Link href="/help" className="hover:text-zinc-800 dark:hover:text-zinc-300 focus-visible:outline-2 focus-visible:outline-sky-500 rounded">
-              Help
-            </Link>
-          </nav>
+      <section aria-labelledby="seo-heading" className="mt-10 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 p-6 sm:p-8">
+        <h2 id="seo-heading" className="text-lg font-semibold tracking-tight">
+          What EnvSmith does with your environment variables
+        </h2>
+        <div className="mt-4 grid gap-6 md:grid-cols-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+          <div>
+            <h3 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Parses real dotenv files</h3>
+            <p className="mt-1.5">
+              EnvSmith reads standard dotenv syntax: quoted and unquoted values, <code className="font-mono text-xs">export</code>{" "}
+              prefixes, full-line and inline comments, values containing equals signs, and multiline content. Malformed
+              lines are reported with a line number and a plain-language explanation instead of a cryptic parser error.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Detects types and secrets</h3>
+            <p className="mt-1.5">
+              Every variable gets an inferred type — string, number, boolean, URL or JSON — with a confidence level, plus
+              a secret classification built from the key name, the value shape and known token patterns like JWTs and
+              cloud API keys. Secrets are masked in the interface and never written to generated files.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Generates team-ready output</h3>
+            <p className="mt-1.5">
+              Produce a documented <code className="font-mono text-xs">.env.example</code> in three template modes, a
+              runtime Zod schema with safe <code className="font-mono text-xs">process.env</code> coercion, TypeScript
+              types, JSON Schema, and Markdown documentation. Copy everything to the clipboard or download the files and
+              commit them to your repository.
+            </p>
+          </div>
         </div>
-      </footer>
+        <p className="mt-6 text-sm leading-6 text-zinc-600 dark:text-zinc-400 max-w-3xl">
+          The workflow is simple: drop a <code className="font-mono text-xs">.env</code> file, review the detected
+          variables, fix types and descriptions in the side editor, and compare the result against an existing{" "}
+          <code className="font-mono text-xs">.env.example</code> to see which variables are missing, outdated or out of
+          sync. Everything happens locally on your machine — there is no account, no upload, and no tracking involved at
+          any step, so you can safely inspect production-like configuration files without exposing credentials.
+        </p>
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <Link
+            href="/compare"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-sky-600 dark:text-sky-400 hover:underline focus-visible:outline-2 focus-visible:outline-sky-500"
+          >
+            Compare .env and .env.example
+            <ArrowRightIcon className="size-4" aria-hidden />
+          </Link>
+          <span aria-hidden className="text-zinc-300 dark:text-zinc-700">
+            ·
+          </span>
+          <Link
+            href="/help"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-sky-600 dark:text-sky-400 hover:underline focus-visible:outline-2 focus-visible:outline-sky-500"
+          >
+            Read the full guide
+            <ArrowRightIcon className="size-4" aria-hidden />
+          </Link>
+        </div>
+      </section>
+
+      <ShareButtons />
+
+      <SiteFooter />
     </main>
   );
 }

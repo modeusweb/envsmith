@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | EnvSmith",
   },
   description:
-    "EnvSmith helps you generate safe .env.example files and environment validation schemas (Zod) directly in your browser. 100% local processing — your .env never leaves your browser.",
+    "Free browser-based .env.example generator and Zod validator. EnvSmith parses dotenv files, masks secrets, infers types and syncs .env with .env.example — locally, with no uploads.",
   keywords: ["EnvSmith", ".env", "env.example", "zod", "environment variables", "validation", "developer tools"],
   applicationName: "EnvSmith",
   authors: [{ name: "modeusweb", url: "https://github.com/modeusweb" }],
