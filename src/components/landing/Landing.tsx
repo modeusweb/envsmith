@@ -148,7 +148,9 @@ export function Landing({
 
       <ShareButtons />
 
-      <SiteFooter />
+      <div className="mt-12 sm:mt-16">
+        <SiteFooter />
+      </div>
     </main>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Header } from "@/components/ui/Header";
+import { SiteFooter } from "@/components/ui/SiteFooter";
 import { Landing } from "@/components/landing/Landing";
 import { Workspace } from "@/components/workspace/Workspace";
 import { useEnvWorkspace } from "@/hooks/use-env-workspace";
@@ -90,6 +91,7 @@ export default function HomePage() {
           setView("landing");
         }}
       />
+      <SiteFooter />
     </>
   );
 }

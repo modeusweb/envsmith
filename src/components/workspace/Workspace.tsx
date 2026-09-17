@@ -75,7 +75,7 @@ export function Workspace({
   ];
 
   return (
-    <main className="mx-auto max-w-7xl px-4 sm:px-6 flex-1 w-full py-6">
+    <main className="mx-auto max-w-7xl px-4 sm:px-6 flex-1 w-full pt-6 pb-12 sm:pb-16">
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 px-4 py-3 text-sm">
         <Stat label="Variables" value={stats.variables} />
         <Stat label="Secrets" value={stats.secrets} />
@@ -192,4 +192,3 @@ function Stat({ label, value }: { label: string; value: number }) {
     </span>
   );
 }
-
