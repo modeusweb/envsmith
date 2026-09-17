@@ -14,7 +14,7 @@ export function PageShell({ title, subtitle, children }: PageShellProps) {
   return (
     <>
       <Header />
-      <main className="mx-auto max-w-4xl px-4 sm:px-6 flex-1 w-full py-10">
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 flex-1 w-full py-10">
         <nav aria-label="Breadcrumb" className="mb-6">
           <Link
             href="/"

@@ -85,7 +85,7 @@ function PasteDialog({
   return (
     <div className="fixed inset-0 z-50" role="dialog" aria-modal="true" aria-label="Paste your .env content">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} aria-hidden />
-      <div className="absolute left-1/2 top-1/2 w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-4 shadow-xl">
+      <div className="absolute left-1/2 top-1/2 w-[calc(100%-2rem)] max-w-2xl -translate-x-1/2 -translate-y-1/2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-4 shadow-xl">
         <h2 className="text-sm font-semibold">Paste your .env content</h2>
         <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
           Pasted content is processed locally in your browser and never uploaded.

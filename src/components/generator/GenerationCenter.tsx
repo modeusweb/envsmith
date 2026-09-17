@@ -54,7 +54,7 @@ export function GenerationCenter({ variables, mode, onModeChange, onClose }: Gen
   return (
     <div className="fixed inset-0 z-50" role="dialog" aria-modal="true" aria-label="Generate files">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} aria-hidden />
-      <div className="absolute inset-x-4 top-6 bottom-6 mx-auto max-w-5xl rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-xl overflow-y-auto">
+      <div className="absolute inset-x-4 top-6 bottom-6 mx-auto max-w-6xl rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-xl overflow-y-auto">
         <div className="sticky top-0 z-10 flex items-center justify-between gap-2 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 px-4 py-3">
           <h2 className="font-semibold">Generate</h2>
           <div className="flex items-center gap-2">

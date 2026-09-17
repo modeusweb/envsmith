@@ -36,7 +36,7 @@ export function Landing({
         </p>
       </section>
 
-      <section className="max-w-2xl mx-auto" aria-label="Upload your .env file">
+      <section className="w-full" aria-label="Upload your .env file">
         <DropZone onFile={onFile} />
         <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center">
           <Link

@@ -2,6 +2,8 @@
 
 **Keep your .env and .env.example in sync.**
 
+> **Demo:** [https://envsmith.vercel.app/](https://envsmith.vercel.app/)
+
 EnvSmith is a privacy-first developer tool that turns your local `.env` into a safe, documented
 `.env.example` and a production-ready runtime validation schema (Zod, TypeScript types, JSON Schema)
 — **entirely in your browser**.
