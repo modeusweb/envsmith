@@ -25,14 +25,11 @@ export default function HomePage() {
     return (
       <>
         <Header />
-        <Landing onFile={handleFile} onCompareClick={() => setView("compare-only")} />
-        <button
-          type="button"
-          onClick={() => setPasteOpen(true)}
-          className="fixed bottom-4 inset-x-0 mx-auto w-max rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-4 py-2 text-xs font-medium shadow-sm hover:shadow focus-visible:outline-2 focus-visible:outline-sky-500"
-        >
-          Paste .env text instead
-        </button>
+        <Landing
+          onFile={handleFile}
+          onCompareClick={() => setView("compare-only")}
+          onPasteClick={() => setPasteOpen(true)}
+        />
         {pasteOpen && (
           <PasteDialog
             value={pasteText}
