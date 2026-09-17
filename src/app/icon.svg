@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="EnvSmith logo">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#18181b"/>
+      <stop offset="1" stop-color="#0a0e14"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fafafa"/>
+      <stop offset="1" stop-color="#a1a1aa"/>
+    </linearGradient>
+    <linearGradient id="heat" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#ef4444"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="112" fill="none" stroke="#27272a" stroke-width="8"/>
+
+  <!-- sparks -->
+  <g fill="#f59e0b">
+    <circle cx="140" cy="118" r="10"/>
+    <circle cx="372" cy="106" r="7" fill="#ef4444"/>
+    <circle cx="404" cy="164" r="9"/>
+    <circle cx="112" cy="176" r="6" fill="#fbbf24"/>
+  </g>
+
+  <!-- anvil -->
+  <g fill="url(#steel)">
+    <!-- top face with horn -->
+    <path d="M96 208h320c0 44-40 64-96 64h-52v36h44c10 0 18 8 18 18v14c0 10-8 18-18 18H200c-10 0-18-8-18-18v-14c0-10 8-18 18-18h44v-36h-56c-56 0-92-24-92-64z"/>
+    <!-- base -->
+    <path d="M168 380h176c10 0 18 8 18 18v10c0 10-8 18-18 18H168c-10 0-18-8-18-18v-10c0-10 8-18 18-18z" opacity="0.85"/>
+  </g>
+
+  <!-- hot bar (the env being forged) -->
+  <rect x="212" y="150" width="88" height="34" rx="8" fill="url(#heat)"/>
+
+  <!-- hammer -->
+  <g transform="rotate(-38 340 84)">
+    <rect x="332" y="60" width="16" height="96" rx="8" fill="#d4a373"/>
+    <rect x="306" y="44" width="68" height="34" rx="10" fill="url(#steel)"/>
+  </g>
+</svg>
