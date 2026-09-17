@@ -106,3 +106,8 @@ Domain logic is pure and framework-agnostic — every generator/parser function 
 
 Next.js (App Router) · React 19 · TypeScript (strict) · Tailwind CSS 4 · Heroicons ·
 Vitest · Playwright · sharp (asset pipeline). No backend, no database, no analytics.
+
+## License
+
+[MIT](LICENSE) © EnvSmith contributors
+
