@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowRightIcon, ClipboardDocumentIcon } from "@heroicons/react/24/outline";
 import { DropZone } from "@/components/upload/DropZone";
 import { PrivacySection } from "./PrivacySection";
@@ -92,7 +93,17 @@ export function Landing({
       <PrivacySection />
 
       <footer className="py-10 text-center text-xs text-zinc-500 dark:text-zinc-500">
-        EnvSmith — no accounts, no uploads, no tracking.
+        <div className="flex flex-col items-center gap-3">
+          <span>EnvSmith — no accounts, no uploads, no tracking.</span>
+          <nav aria-label="Footer" className="flex items-center gap-4">
+            <Link href="/about" className="hover:text-zinc-800 dark:hover:text-zinc-300 focus-visible:outline-2 focus-visible:outline-sky-500 rounded">
+              About
+            </Link>
+            <Link href="/help" className="hover:text-zinc-800 dark:hover:text-zinc-300 focus-visible:outline-2 focus-visible:outline-sky-500 rounded">
+              Help
+            </Link>
+          </nav>
+        </div>
       </footer>
     </main>
   );
