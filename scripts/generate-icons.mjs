@@ -11,15 +11,15 @@ const OUT_DIR = "src/app";
 const PUBLIC_DIR = "public";
 
 const ICONS = [
-  { name: "icon.svg", size: null },
-  { name: "favicon.ico", size: 32 },
-  { name: "icon.png", size: 512 },
-  { name: "apple-icon.png", size: 180 },
-  { name: "icon-192.png", size: 192 },
-  { name: "icon-512.png", size: 512 },
+  { name: "icon.svg", size: null, dir: OUT_DIR },
+  { name: "favicon.ico", size: 32, dir: OUT_DIR },
+  { name: "icon.png", size: 512, dir: OUT_DIR },
+  { name: "apple-icon.png", size: 180, dir: OUT_DIR },
+  { name: "icon-192.png", size: 192, dir: PUBLIC_DIR },
+  { name: "icon-512.png", size: 512, dir: PUBLIC_DIR },
 ];
 
-const SOCIAL = { name: "opengraph-image.png", width: 1200, height: 630 };
+const SOCIAL = { name: "opengraph-image.png", width: 1200, height: 630, dir: OUT_DIR };
 
 await mkdir(OUT_DIR, { recursive: true });
 await mkdir(PUBLIC_DIR, { recursive: true });
@@ -29,7 +29,7 @@ const svgBuffer = await readFile(SVG_PATH);
 for (const icon of ICONS) {
   if (!icon.size) {
     // copy the vector as-is
-    await writeFile(`${OUT_DIR}/${icon.name}`, svgBuffer);
+    await writeFile(`${icon.dir}/${icon.name}`, svgBuffer);
     await writeFile(`${PUBLIC_DIR}/logo.svg`, svgBuffer);
     console.log(`✓ ${icon.name} + public/logo.svg (vector)`);
     continue;
@@ -38,8 +38,8 @@ for (const icon of ICONS) {
     .resize(icon.size, icon.size)
     .png()
     .toBuffer({ resolveWithObject: true });
-  await writeFile(`${OUT_DIR}/${icon.name}`, data);
-  console.log(`✓ ${icon.name} (${info.width}x${info.height})`);
+  await writeFile(`${icon.dir}/${icon.name}`, data);
+  console.log(`✓ ${icon.dir}/${icon.name} (${info.width}x${info.height})`);
 }
 
 // 1200x630 social preview: logo centered on dark background
@@ -61,5 +61,5 @@ const social = await sharp({
   .png()
   .toBuffer();
 
-await writeFile(`${OUT_DIR}/${SOCIAL.name}`, social);
+await writeFile(`${SOCIAL.dir}/${SOCIAL.name}`, social);
 console.log(`✓ ${SOCIAL.name} (${SOCIAL.width}x${SOCIAL.height})`);
