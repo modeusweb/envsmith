@@ -6,6 +6,7 @@ import {
   ArrowsRightLeftIcon,
   ExclamationTriangleIcon,
   LockClosedIcon,
+  ArrowLeftIcon,
 } from "@heroicons/react/24/outline";
 import { VariablesTable } from "@/components/variables/VariablesTable";
 import { VariableEditor } from "@/components/variables/VariableEditor";
@@ -196,12 +197,22 @@ function Stat({ label, value }: { label: string; value: number }) {
 
 export function CompareOnlyView({
   onFile,
+  onBack,
 }: {
   onFile: (fileName: string, fileSize: number, content: string) => void;
+  onBack: () => void;
 }) {
   return (
     <main className="mx-auto max-w-7xl px-4 sm:px-6 flex-1 w-full py-10">
-      <h1 className="text-2xl font-semibold tracking-tight">Compare .env files</h1>
+      <button
+        type="button"
+        onClick={onBack}
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 focus-visible:outline-2 focus-visible:outline-sky-500"
+      >
+        <ArrowLeftIcon className="size-4" aria-hidden />
+        Back to home
+      </button>
+      <h1 className="mt-4 text-2xl font-semibold tracking-tight">Compare .env files</h1>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
         Start by dropping your local <span className="font-mono">.env</span>. Then add an existing{" "}
         <span className="font-mono">.env.example</span> to see what is missing or outdated.

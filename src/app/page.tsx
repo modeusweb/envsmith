@@ -50,7 +50,7 @@ export default function HomePage() {
     return (
       <>
         <Header />
-        <CompareOnlyView onFile={handleFile} />
+        <CompareOnlyView onFile={handleFile} onBack={() => setView("landing")} />
       </>
     );
   }
