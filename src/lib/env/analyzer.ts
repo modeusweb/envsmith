@@ -19,7 +19,6 @@ export function analyzeVariables(
   const source = options.source ?? "env";
   const parsed = typeof input === "string" ? parseEnv(input) : { entries: input, errors: [], order: [] };
 
-  const seenKeys = new Set<string>();
   const variables: EnvVariable[] = [];
 
   for (const entry of parsed.entries) {
@@ -29,14 +28,6 @@ export function analyzeVariables(
     const required = options.defaultRequired ?? true;
     const validName = isValidEnvName(entry.key);
 
-    if (entry.duplicate) {
-      issues.push({
-        code: "duplicate",
-        severity: "warning",
-        title: "Duplicate variable",
-        explanation: `"${entry.key}" is defined more than once. The last value wins at runtime, which is rarely intended.`,
-      });
-    }
     if (!validName) {
       issues.push({
         code: "invalid-name",
@@ -71,10 +62,7 @@ export function analyzeVariables(
       });
     }
 
-    // Track duplicates across all entries (first occurrence flagged later)
-    const isDuplicate = seenKeys.has(entry.key);
-    seenKeys.add(entry.key);
-
+    // Track duplicates across all entries (flagged below)
     variables.push({
       key: entry.key,
       rawValue: entry.rawValue,
@@ -86,7 +74,7 @@ export function analyzeVariables(
       description: "",
       originalLine: entry.line,
       source,
-      issues: isDuplicate ? issues.filter((i) => i.code !== "duplicate") : issues,
+      issues,
       quoted: entry.quoted,
       comment: entry.comment,
       line: entry.line,

@@ -47,3 +47,7 @@ next-env.d.ts
 # lockfiles
 package-lock.json
 
+# tests & scripts (kept locally, not tracked)
+*.test.ts
+scripts/*.mjs
+

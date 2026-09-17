@@ -24,6 +24,17 @@ body {
   color: var(--foreground);
 }
 
+/* All clickable elements show a pointer cursor */
+button,
+[role="button"],
+[role="radio"],
+[role="tab"],
+select,
+summary,
+a {
+  cursor: pointer;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
