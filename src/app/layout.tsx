@@ -26,6 +26,10 @@ export const metadata: Metadata = {
   applicationName: "EnvSmith",
   authors: [{ name: "modeusweb", url: "https://github.com/modeusweb" }],
   creator: "modeusweb",
+  verification: {
+    google: "w_s1YAdGDmNMm19tV4F6fl_4o15nDgnZGLM8ledX-f8",
+    yandex: "81b79595ddb6cf9f",
+  },
   alternates: {
     canonical: "/",
   },
